@@ -1,2 +1,6 @@
 # Proyecto-Java-SpringBoot
-En este proyecto se demostrara el uso de tecnologias java maven y SpringBoot. Fecha inicio 24/06/2024
+Este proyecto busca crear mediante las tecnologias java maven y SpringBoot una tienda virtual. 
+
+## Integrantes: 
+Nicolas Olivero
+Ian Cicarelli 
