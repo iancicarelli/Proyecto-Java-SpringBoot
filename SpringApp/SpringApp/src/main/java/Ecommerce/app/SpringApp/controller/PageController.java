@@ -15,4 +15,9 @@ public class PageController {
     public String index() {
         return "index";
     }
+
+    @GetMapping("/addProduct")
+    public String addProduct() {
+        return "addProduct";
+    }
 }
