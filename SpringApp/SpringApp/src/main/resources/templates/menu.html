@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,61 +20,55 @@
 <div class="container">
     <h2>Catálogo de Zapatillas</h2>
 
+    <!-- Catálogo para Hombres -->
     <div class="catalogo">
         <h3>Hombre</h3>
         <div class="marca">
             <h4>Nike</h4>
             <ul>
-                <li><a href="/productDetails?name=Zapatilla Nike Air Max">Zapatilla Nike Air Max</a></li>
-                <li><a href="/productDetails?name=Zapatilla Nike Revolution">Zapatilla Nike Revolution</a></li>
-                <li><a href="/productDetails?name=Zapatilla Nike Zoom">Zapatilla Nike Zoom</a></li>
+                <li th:each="product : ${products}"
+                    th:if="${product.gender == 'Hombre' && product.brand == 'Nike'}">
+                    <a th:href="@{/productDetails(name=${product.name})}" th:text="${product.name}"></a>
+                </li>
             </ul>
         </div>
         <div class="marca">
             <h4>Adidas</h4>
             <ul>
-                <li><a href="/productDetails?name=Zapatilla Adidas Ultraboost">Zapatilla Adidas Ultraboost</a></li>
-                <li><a href="/productDetails?name=Zapatilla Adidas Superstar">Zapatilla Adidas Superstar</a></li>
-                <li><a href="/productDetails?name=Zapatilla Adidas NMD">Zapatilla Adidas NMD</a></li>
+                <li th:each="product : ${products}"
+                    th:if="${product.gender == 'Hombre' && product.brand == 'Adidas'}">
+                    <a th:href="@{/productDetails(name=${product.name})}" th:text="${product.name}"></a>
+                </li>
             </ul>
         </div>
-        <div class="marca">
-            <h4>Puma</h4>
-            <ul>
-                <li><a href="/productDetails?name=Zapatilla Puma RS-X">Zapatilla Puma RS-X</a></li>
-                <li><a href="/productDetails?name=Zapatilla Puma Suede">Zapatilla Puma Suede</a></li>
-                <li><a href="/productDetails?name=Zapatilla Puma Future Rider">Zapatilla Puma Future Rider</a></li>
-            </ul>
-        </div>
+        <!-- Repetir para otras marcas -->
     </div>
 
+    <!-- Catálogo para Mujeres -->
     <div class="catalogo">
         <h3>Mujer</h3>
         <div class="marca">
             <h4>Nike</h4>
             <ul>
-                <li><a href="/productDetails?name=Zapatilla Nike Air Max">Zapatilla Nike Air Max</a></li>
-                <li><a href="/productDetails?name=Zapatilla Nike Revolution">Zapatilla Nike Revolution</a></li>
-                <li><a href="/productDetails?name=Zapatilla Nike Zoom">Zapatilla Nike Zoom</a></li>
+                <li th:each="product : ${products}"
+                    th:if="${product.gender == 'Mujer' && product.brand == 'Nike'}">
+                    <a th:href="@{/productDetails(name=${product.name})}" th:text="${product.name}"></a>
+                </li>
             </ul>
         </div>
         <div class="marca">
             <h4>Adidas</h4>
             <ul>
-                <li><a href="/productDetails?name=Zapatilla Adidas Ultraboost">Zapatilla Adidas Ultraboost</a></li>
-                <li><a href="/productDetails?name=Zapatilla Adidas Superstar">Zapatilla Adidas Superstar</a></li>
-                <li><a href="/productDetails?name=Zapatilla Adidas NMD">Zapatilla Adidas NMD</a></li>
+                <li th:each="product : ${products}"
+                    th:if="${product.gender == 'Mujer' && product.brand == 'Adidas'}">
+                    <a th:href="@{/productDetails(name=${product.name})}" th:text="${product.name}"></a>
+                </li>
             </ul>
         </div>
-        <div class="marca">
-            <h4>Puma</h4>
-            <ul>
-                <li><a href="/productDetails?name=Zapatilla Puma RS-X">Zapatilla Puma RS-X</a></li>
-                <li><a href="/productDetails?name=Zapatilla Puma Suede">Zapatilla Puma Suede</a></li>
-                <li><a href="/productDetails?name=Zapatilla Puma Future Rider">Zapatilla Puma Future Rider</a></li>
-            </ul>
-        </div>
+        <!-- Repetir para otras marcas -->
     </div>
+
 </div>
 </body>
 </html>
+

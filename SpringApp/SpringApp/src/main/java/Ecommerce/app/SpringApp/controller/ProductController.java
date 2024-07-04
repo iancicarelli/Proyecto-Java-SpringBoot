@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
 import java.util.List;
 
 @Controller
@@ -32,5 +33,23 @@ public class ProductController {
                               @RequestParam("description") String description) {
         Product product = new Product(name, List.of(sizes.split(",")), imageUrl, price, description);
         return productService.addProduct(product);
+    }
+
+    @GetMapping("/catalog")
+    public String catalog(Model model) {
+        List<Product> products = productService.getAllProducts();
+        model.addAttribute("products", products);
+        return "catalog";
+    }
+
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
+
+    @GetMapping("/menu")
+    public String showMenu(Model model) {
+        List<Product> products = productService.getAllProducts();
+        model.addAttribute("products", products);
+        return "menu";
     }
 }

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/")
 public class PageController {
@@ -20,7 +22,9 @@ public class PageController {
     }
 
     @GetMapping("/menu")
-    public String menu() {
+    public String showMenu(Model model) {
+        List<Product> products = productService.getAllProducts();
+        model.addAttribute("products", products);
         return "menu";
     }
 
