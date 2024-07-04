@@ -3,21 +3,21 @@ package Ecommerce.app.SpringApp.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collation = "users")
+@Document(collection = "users")
 public class User {
     @Id
     private String id;
     private String name;
     private String password;
-    private String checkPassword;
+    private String email;
 
     public User() {
     }
 
-    public User(String name, String password, String checkPassword) {
+    public User(String name, String password, String email) {
         this.name = name;
         this.password = password;
-        this.checkPassword = checkPassword;
+        this.email = email;
     }
 
     public String getName() {
@@ -44,11 +44,11 @@ public class User {
         this.id = id;
     }
 
-    public String getCheckPassword() {
-        return checkPassword;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCheckPassword(String checkPassword) {
-        this.checkPassword = checkPassword;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

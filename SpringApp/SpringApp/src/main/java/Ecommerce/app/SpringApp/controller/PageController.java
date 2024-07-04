@@ -20,4 +20,6 @@ public class PageController {
     public String addProduct() {
         return "addProduct";
     }
+
+
 }

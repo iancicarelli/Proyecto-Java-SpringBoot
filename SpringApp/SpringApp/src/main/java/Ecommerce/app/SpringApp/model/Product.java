@@ -3,7 +3,7 @@ package Ecommerce.app.SpringApp.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collation = "products")
+@Document(collection = "products")
 public class Product {
 
     @Id
