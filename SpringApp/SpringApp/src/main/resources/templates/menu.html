@@ -23,7 +23,6 @@
 <div class="container">
     <h2>Catálogo de Zapatillas</h2>
     <div class="catalogo">
-        <h3>Hombre</h3>
         <div class="marca">
             <h4>Nike</h4>
             <ul>
@@ -49,6 +48,16 @@
             <ul>
                 <div th:each="product : ${products}">
                     <div th:if="${product.name.startsWith('Zapatilla Puma')}">
+                        <li><a th:href="@{/productDetails(name=${product.name})}" th:text="${product.name}"></a></li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="marca">
+            <h4>Vans</h4>
+            <ul>
+                <div th:each="product : ${products}">
+                    <div th:if="${product.name.startsWith('Zapatilla Vans')}">
                         <li><a th:href="@{/productDetails(name=${product.name})}" th:text="${product.name}"></a></li>
                     </div>
                 </div>
