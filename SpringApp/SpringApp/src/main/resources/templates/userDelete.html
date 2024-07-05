@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete User by Name</title>
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li>
+            <li><a href="/menu">Menu</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="container">
+    <h2>Delete User by Name</h2>
+    <form action="/userDelete" method="post">
+        <div>
+            <label for="name">User Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <button type="submit">Delete User</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Find User</title>
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li>
+            <li><a href="/menu">Menu</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="container">
+    <h2>Find User by Name</h2>
+    <form action="/userSearch" method="post">
+        <div>
+            <label for="name">User Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <button type="submit">Find User</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
