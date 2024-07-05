@@ -10,22 +10,23 @@
 <header>
   <nav>
     <ul>
-      <li><a href="/login">Login</a></li>
-      <li><a href="/register">Register</a></li>
-      <li><a href="/menu">Menú</a></li>
-      <li><a href="/addProduct">Agregar Producto</a></li>
+      <li><a th:href="@{/login}">Login</a></li>
+      <li><a th:href="@{/register}">Register</a></li>
+      <li><a th:href="@{/products/menu}">Menú</a></li>
+      <li><a th:href="@{/addProduct}">Agregar Producto</a></li>
     </ul>
   </nav>
 </header>
 <div class="container">
   <h2>Detalles del Producto</h2>
-  <div class="product-details">
-    <h3 th:text="${product.name}">Nombre del Producto</h3>
-    <p><strong>Tallas:</strong> <span th:text="${product.sizes}">Tallas del Producto</span></p>
-    <img th:src="${product.imageUrl}" th:alt="${product.name}" /> <!-- Mostrar la imagen usando la URL -->
-    <p><strong>Precio:</strong> <span th:text="${product.price}">Precio del Producto</span></p>
-    <p><strong>Descripción:</strong> <span th:text="${product.description}">Descripción del Producto</span></p>
+  <div>
+    <p>Nombre: <span th:text="${product.name}"></span></p>
+    <p>Tamaños: <span th:text="${product.sizes}"></span></p>
+    <p>Imagen: <img th:src="${product.imageUrl}" alt="Imagen del producto"></p>
+    <p>Precio: <span th:text="${product.price}"></span></p>
+    <p>Descripción: <span th:text="${product.description}"></span></p>
   </div>
 </div>
 </body>
 </html>
+

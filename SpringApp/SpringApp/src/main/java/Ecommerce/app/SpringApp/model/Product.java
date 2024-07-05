@@ -1,18 +1,21 @@
 package Ecommerce.app.SpringApp.model;
 import java.util.List;
 
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
 @Document(collection = "products")
 public class Product {
+    @Id
+    private String id;
     private String name;
     private List<String> sizes;
     private String imageUrl;
-    private double price;
+    private Double price;
     private String description;
 
-    public Product(String name, List<String> sizes, String imageUrl, double price, String description) {
+    // Constructor, getters y setters
+    public Product(String name, List<String> sizes, String imageUrl, Double price, String description) {
         this.name = name;
         this.sizes = sizes;
         this.imageUrl = imageUrl;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,56 +19,41 @@
 </header>
 <div class="container">
     <h2>Catálogo de Zapatillas</h2>
-
-    <!-- Catálogo para Hombres -->
     <div class="catalogo">
         <h3>Hombre</h3>
         <div class="marca">
             <h4>Nike</h4>
             <ul>
-                <li th:each="product : ${products}"
-                    th:if="${product.gender == 'Hombre' && product.brand == 'Nike'}">
-                    <a th:href="@{/productDetails(name=${product.name})}" th:text="${product.name}"></a>
-                </li>
+                <div th:each="product : ${products}">
+                    <div th:if="${product.name.startsWith('Zapatilla Nike')}">
+                        <li><a th:href="@{/productDetails(name=${product.name})}" th:text="${product.name}"></a></li>
+                    </div>
+                </div>
             </ul>
         </div>
         <div class="marca">
             <h4>Adidas</h4>
             <ul>
-                <li th:each="product : ${products}"
-                    th:if="${product.gender == 'Hombre' && product.brand == 'Adidas'}">
-                    <a th:href="@{/productDetails(name=${product.name})}" th:text="${product.name}"></a>
-                </li>
-            </ul>
-        </div>
-        <!-- Repetir para otras marcas -->
-    </div>
-
-    <!-- Catálogo para Mujeres -->
-    <div class="catalogo">
-        <h3>Mujer</h3>
-        <div class="marca">
-            <h4>Nike</h4>
-            <ul>
-                <li th:each="product : ${products}"
-                    th:if="${product.gender == 'Mujer' && product.brand == 'Nike'}">
-                    <a th:href="@{/productDetails(name=${product.name})}" th:text="${product.name}"></a>
-                </li>
+                <div th:each="product : ${products}">
+                    <div th:if="${product.name.startsWith('Zapatilla Adidas')}">
+                        <li><a th:href="@{/productDetails(name=${product.name})}" th:text="${product.name}"></a></li>
+                    </div>
+                </div>
             </ul>
         </div>
         <div class="marca">
-            <h4>Adidas</h4>
+            <h4>Puma</h4>
             <ul>
-                <li th:each="product : ${products}"
-                    th:if="${product.gender == 'Mujer' && product.brand == 'Adidas'}">
-                    <a th:href="@{/productDetails(name=${product.name})}" th:text="${product.name}"></a>
-                </li>
+                <div th:each="product : ${products}">
+                    <div th:if="${product.name.startsWith('Zapatilla Puma')}">
+                        <li><a th:href="@{/productDetails(name=${product.name})}" th:text="${product.name}"></a></li>
+                    </div>
+                </div>
             </ul>
         </div>
-        <!-- Repetir para otras marcas -->
     </div>
-
 </div>
 </body>
 </html>
+
 

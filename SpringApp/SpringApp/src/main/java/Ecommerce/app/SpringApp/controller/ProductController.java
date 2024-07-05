@@ -25,14 +25,14 @@ public class ProductController {
     }
 
     @PostMapping("/add")
-    @ResponseBody
-    public Product addProduct(@RequestParam("name") String name,
-                              @RequestParam("sizes") String sizes,
-                              @RequestParam("imageUrl") String imageUrl,
-                              @RequestParam("price") Double price,
-                              @RequestParam("description") String description) {
+    public String addProduct(@RequestParam("name") String name,
+                             @RequestParam("sizes") String sizes,
+                             @RequestParam("imageUrl") String imageUrl,
+                             @RequestParam("price") Double price,
+                             @RequestParam("description") String description) {
         Product product = new Product(name, List.of(sizes.split(",")), imageUrl, price, description);
-        return productService.addProduct(product);
+        productService.addProduct(product);
+        return "redirect:/menu"; // Redirigir al menú después de agregar el producto
     }
 
     @GetMapping("/catalog")
@@ -42,14 +42,30 @@ public class ProductController {
         return "catalog";
     }
 
-    public ProductController(ProductService productService) {
-        this.productService = productService;
-    }
-
     @GetMapping("/menu")
     public String showMenu(Model model) {
         List<Product> products = productService.getAllProducts();
         model.addAttribute("products", products);
         return "menu";
+    }
+
+    @GetMapping("/details/{name}")
+    public String productDetails(@PathVariable("name") String name, Model model) {
+        Product product = productService.getProductByName(name);
+        if (product != null) {
+            model.addAttribute("product", product);
+            return "productDetails";
+        } else {
+            return "error/404";
+        }
+    }
+
+    @ExceptionHandler(Exception.class)
+    public String handleError() {
+        return "error/404";
+    }
+
+    public ProductController(ProductService productService) {
+        this.productService = productService;
     }
 }

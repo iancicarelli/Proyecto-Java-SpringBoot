@@ -15,19 +15,15 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-
-    public Product getProductByName(String name) {
-        return products.stream()
-                .filter(product -> product.getName().equals(name))
-                .findFirst()
-                .orElse(null);
+    public Product addProduct(Product product) {
+        return productRepository.save(product);
     }
 
     public List<Product> getAllProducts() {
-        return products;
+        return productRepository.findAll();
     }
 
-    public Product addProduct(Product product) {
-        return productRepository.save(product);
+    public Product getProductByName(String name) {
+        return productRepository.findByName(name);
     }
 }
